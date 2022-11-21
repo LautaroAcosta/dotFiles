@@ -1,0 +1,283 @@
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+
+[colors]
+background = #282828
+background0 = #3c3836
+background1 = #504945
+foreground = #ebdbb2
+foreground0 = #fbf1c7
+foreground1 = #a89984
+alert = #cc241d
+gray = #a89984
+light-orange = #fe8019a
+orange = #d65d0e
+dark-orange = #af3a03
+light-green = #b8bb26
+green = #98971a
+dark-green = #79740e
+yellow = #fabd2f
+dark-yellow = #d79921
+light-blue = #83a598
+blue = #458588
+dark-blue = #076678
+aqua = #689d6a
+light-aqua = #8ec07c
+dark-aqua = #427b58
+purple = #b16586
+light-purple = #d3869b
+dark-purple = #8f3f71
+light-red = #fb4934
+red = #cc241d
+dark-red = #9d0006
+
+[bar/first]
+monitor = ${env:MONITOR:HDMI-0}
+width = 100%
+height = 20
+; offset-x = 5%
+; offset-y = 1%
+radius = 9.0
+fixed-center = true
+botton = false
+separator = |
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 3
+line-color = #f00
+
+border-size = 4
+border-color = #00000000
+
+padding-left = 0
+padding-right = 1
+
+module-margin-left = 1
+module-margin-right = 2
+
+font-0 = "Fira Code Nerd Font:size=10;2" 
+font-1 = "FontAwesome:size=13;2"
+font-2 = "Fira Code Nerd Font:size=10;2"  
+font-3 = "Fira Code Nerd Font:size=10;2" 
+
+modules-left = i3
+modules-center = date powermenu
+modules-right = spotify pulseaudio  weather memory cpu filesystem 
+; modules-right = filesystem xbacklight pulseaudio xkeyboard memory cpu wlan eth battery temperature date powermenu
+
+tray-position = none
+tray-padding = 2
+;tray-background = #0063ff
+
+;wm-restack = bspwm
+;wm-restack = i3
+
+;override-redirect = true
+
+;scroll-up = bspwm-desknext
+;scroll-down = bspwm-deskprev
+
+;scroll-up = i3wm-wsnext
+;scroll-down = i3wm-wsprev
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+
+[bar/second]
+monitor = ${env:MONITOR:VGA-0}
+inherit = bar/first
+
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:30:...%
+label-foreground = ${colors.blue}
+
+
+[module/filesystem]
+type = internal/fs
+interval = 25
+
+mount-0 = /
+
+label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
+label-unmounted = %mountpoint% not mounted
+label-unmounted-foreground = ${colors.foreground-alt}
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+index-sort = false
+wrapping-scroll = false
+enable-click = true
+
+; Only show workspaces on the same output as the bar
+;pin-workspaces = true
+; label-mode = %mode%gc
+label-mode-padding = 1
+label-mode-foreground = #000
+label-mode-background = ${colors.primary}
+
+; focused = Active workspace on focused monitor
+label-focused = %name%
+label-focused-background = ${colors.background}
+label-focused-foreground = ${colors.orange}
+label-focused-underline= ${colors.primary}
+label-focused-padding = 1
+
+; unfocused = Inactive workspace on any monitor
+label-unfocused = %name%
+label-unfocused-padding = 1
+
+; visible = Active workspace on unfocused monitor
+label-visible = %name%
+label-visible-background = ${self.label-focused-background}
+label-visible-underline = ${self.label-focused-underline}
+label-visible-padding = ${self.label-focused-padding}
+
+; urgent = Workspace with urgency hint set
+label-urgent = %name%
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 1
+
+; Separator in between workspaces
+; label-separator = |
+
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = " "
+format-prefix-foreground = ${colors.blue}
+label = %percentage:2%%
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix = " "
+format-prefix-foreground = ${colors.dark-orange}
+label = %percentage_used%%
+
+; format = <label> <ramp-used>
+; label = %percentage_used
+
+[module/date]
+type = internal/date
+interval = 1
+
+date = 
+date-alt = " %Y-%m-%d"
+
+time = %H:%M
+time-alt = %H:%M:%S
+
+format-prefix = " "
+format-prefix-foreground = ${colors.light-green}
+; format-underline = #0a6cf5
+
+label = %date% %time%
+label-font = 2
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+format-volume = <label-volume> <bar-volume>
+label-volume =  %percentage%%
+label-volume-foreground = ${root.pink}
+
+label-muted = 
+label-muted-foreground = #666
+
+bar-volume-width = 5
+bar-volume-foreground-0 = ${colors.light-green}
+bar-volume-foreground-1 = ${colors.light-green}
+bar-volume-foreground-2 = ${colors.green}
+bar-volume-foreground-3 = ${colors.green}
+bar-volume-foreground-4 = ${colors.green}
+bar-volume-foreground-5 = ${colors.dark-yellow}
+bar-volume-foreground-6 = ${colors.red}
+bar-volume-gradient = false
+bar-volume-indicator = 
+bar-volume-indicator-font = 2
+bar-volume-fill = ─
+bar-volume-fill-font = 2
+bar-volume-empty = ─
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${colors.foreground-alt}
+
+click-right = pavucontrol
+
+[module/powermenu]
+type = custom/menu
+
+expand-right = true
+
+format-spacing = 1
+
+label-open = 
+label-open-foreground = ${colors.foreground}
+label-close =  cancel
+label-close-foreground = ${colors.foreground0y}
+label-separator = |
+label-separator-foreground = ${colors.foreground1}
+
+menu-0-0 = reboot
+menu-0-0-exec = menu-open-1
+menu-0-1 = power off
+menu-0-1-exec = menu-open-2
+
+menu-1-0 = cancel
+menu-1-0-exec = menu-open-0
+menu-1-1 = reboot
+menu-1-1-exec = sudo reboot
+
+menu-2-0 = power off
+menu-2-0-exec = sudo poweroff
+menu-2-1 = cancel
+menu-2-1-exec = menu-open-0
+
+
+[module/weather]
+type = custom/script
+interval = 10
+format = <label>
+format-prefix = ""
+format-prefix-foreground = ${colors.gray}
+exec = python3 -u /home/lautaroacost/Desktop/Programs/Python/weather.py
+
+[module/spotify]
+type = custom/script
+interval = 1
+format-prefix = " "
+format = <label>
+label-foreground = ${colors.foreground}
+format-prefix-foreground = %{colors.foreground}
+
+exec = python3 /home/lautaroacost/Desktop/Programs/Python/spotify.py -f '{song}' -t 10
+format-underline = ${colors.light-green}
+;control players (optional)
+click-left = playerctl --player=spotify play-pause 
+click-right = playerctl --player=spotify next 
+click-middle = playerctl --player=spotify previous 
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+;pseudo-transparency = false
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+; vim:ft=dosini
