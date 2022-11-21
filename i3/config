@@ -228,6 +228,7 @@ hide_edge_borders both
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 bindsym $mod+shift+x exec i3lock --color "$bg-color"
+exec "xautolock -detectsleep -time 5 -locker \"i3lock --color "$bg-color\""
 
 # exec brave
 # exec kitty
