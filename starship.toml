@@ -53,8 +53,8 @@ symbol = " "
 symbol = " "
 
 [git_branch]
-symbol = " "
-format = '\[[$symbol$branch]($style)\]'
+symbol = " "
+# format = '\[[$symbol$branch]($style)\]'
 [golang]
 symbol = " "
 
