@@ -20,8 +20,12 @@ return require('packer').startup(function()
     }
     use 'tpope/vim-commentary'
     use "lukas-reineke/indent-blankline.nvim"
-    use 'vim-airline/vim-airline'
-    use 'vim-airline/vim-airline-themes'
+    -- use 'vim-airline/vim-airline'
+    -- use 'vim-airline/vim-airline-themes'
+    use {
+    'nvim-lualine/lualine.nvim',
+     requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+    }
     use 'ryanoasis/vim-devicons'
     use 'p00f/nvim-ts-rainbow'
     use 'nvim-tree/nvim-web-devicons'
@@ -57,8 +61,9 @@ return require('packer').startup(function()
     
 
     -- ToggleTerm, Terminal adentro de nvim
-    use {"akinsho/toggleterm.nvim", tag = '*', config = function()
-    require("toggleterm").setup()
-    end}
+    -- use "akinsho/toggleterm.nvim"
+
+    -- Startup Info
+    use 'dstein64/vim-startuptime'
 end)
 

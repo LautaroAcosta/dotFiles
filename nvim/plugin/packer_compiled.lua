@@ -114,6 +114,11 @@ _G.packer_plugins = {
     path = "/home/lautaroacost/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
     url = "https://github.com/lukas-reineke/indent-blankline.nvim"
   },
+  ["lualine.nvim"] = {
+    loaded = true,
+    path = "/home/lautaroacost/.local/share/nvim/site/pack/packer/start/lualine.nvim",
+    url = "https://github.com/nvim-lualine/lualine.nvim"
+  },
   nerdtree = {
     loaded = true,
     path = "/home/lautaroacost/.local/share/nvim/site/pack/packer/start/nerdtree",
@@ -171,20 +176,9 @@ _G.packer_plugins = {
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
   ["toggleterm.nvim"] = {
-    config = { "\27LJ\2\0028\0\0\2\0\3\0\0066\0\0\0'\1\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\15toggleterm\frequire\0" },
     loaded = true,
     path = "/home/lautaroacost/.local/share/nvim/site/pack/packer/start/toggleterm.nvim",
     url = "https://github.com/akinsho/toggleterm.nvim"
-  },
-  ["vim-airline"] = {
-    loaded = true,
-    path = "/home/lautaroacost/.local/share/nvim/site/pack/packer/start/vim-airline",
-    url = "https://github.com/vim-airline/vim-airline"
-  },
-  ["vim-airline-themes"] = {
-    loaded = true,
-    path = "/home/lautaroacost/.local/share/nvim/site/pack/packer/start/vim-airline-themes",
-    url = "https://github.com/vim-airline/vim-airline-themes"
   },
   ["vim-commentary"] = {
     loaded = true,
@@ -206,6 +200,11 @@ _G.packer_plugins = {
     path = "/home/lautaroacost/.local/share/nvim/site/pack/packer/start/vim-nerdtree-syntax-highlight",
     url = "https://github.com/tiagofumo/vim-nerdtree-syntax-highlight"
   },
+  ["vim-startuptime"] = {
+    loaded = true,
+    path = "/home/lautaroacost/.local/share/nvim/site/pack/packer/start/vim-startuptime",
+    url = "https://github.com/dstein64/vim-startuptime"
+  },
   vimtex = {
     loaded = true,
     path = "/home/lautaroacost/.local/share/nvim/site/pack/packer/start/vimtex",
@@ -218,10 +217,6 @@ time([[Defining packer_plugins]], false)
 time([[Config for nvim-autopairs]], true)
 try_loadstring("\27LJ\2\2@\0\0\2\0\3\0\a6\0\0\0'\1\1\0B\0\2\0029\0\2\0004\1\0\0B\0\2\1K\0\1\0\nsetup\19nvim-autopairs\frequire\0", "config", "nvim-autopairs")
 time([[Config for nvim-autopairs]], false)
--- Config for: toggleterm.nvim
-time([[Config for toggleterm.nvim]], true)
-try_loadstring("\27LJ\2\0028\0\0\2\0\3\0\0066\0\0\0'\1\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\15toggleterm\frequire\0", "config", "toggleterm.nvim")
-time([[Config for toggleterm.nvim]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then

@@ -4,4 +4,5 @@ require("lautaro.remap")
 require ("lautaro.set")
 require("lautaro.TSConfig")
 require("lautaro.packer")
-
+require("lautaro.lualine")
+-- require("lautaro.toggleterm")
