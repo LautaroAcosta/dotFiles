@@ -28,6 +28,21 @@ vim.cmd[[
     setlocal spell!
  ]]
 
-vim.keymap.set('n', '<leader>s', ':setlocal spell!<CR>')
-vim.keymap.set('n','<F2>',':NERDTreeToggle<CR>')
+vim.keymap.set('n','<leader>s'  , ':setlocal spell!<CR>')
+vim.keymap.set('n','<F2>'       ,':NERDTreeToggle<CR>')
+vim.keymap.set('n','<C-t>'      ,':tabnew<CR>')
+vim.keymap.set('n','<C-Left>'   ,':tabprevious<CR>')
+vim.keymap.set('n','<C-Right>'  ,':tabnext<CR>')
+
+
+
+vim.cmd[[
+    set nocompatible
+    filetype plugin on
+    syntax on
+
+    let g:sneak#label = 1
+    let g:vimwiki_list = [{'path': '~/Documents/vimwiki/', 'syntax': 'markdown','ext':'.md'}]
+]]
+
 

@@ -15,7 +15,7 @@ return require('packer').startup(function()
     
     -- Plugin para configurar la apariencia del editor
     use {
-	"windwp/nvim-autopairs",
+        "windwp/nvim-autopairs",
     config = function() require("nvim-autopairs").setup {} end
     }
     use 'tpope/vim-commentary'
@@ -32,6 +32,7 @@ return require('packer').startup(function()
     use 'ap/vim-css-color'
     -- NERDTree  
     use 'scrooloose/nerdtree'
+
     use 'tiagofumo/vim-nerdtree-syntax-highlight'
         
     -- TreeSitter
@@ -53,17 +54,29 @@ return require('packer').startup(function()
         'nvim-telescope/telescope.nvim', tag = '0.1.0',
       requires = { {'nvim-lua/plenary.nvim'} }
     }
-    local builtin = require('telescope.builtin')
-    vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-    vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-    vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-    vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
-    
+        use 'nvim-telescope/telescope-file-browser.nvim'
 
     -- ToggleTerm, Terminal adentro de nvim
     -- use "akinsho/toggleterm.nvim"
 
     -- Startup Info
     use 'dstein64/vim-startuptime'
+
+    --VimWiki
+    use 'vimwiki/vimwiki'
+
+    --QuickSearch
+    use 'justinmk/vim-sneak'
+    
+    -- Autosave
+    use({
+	"Pocco81/auto-save.nvim",
+	config = function()
+		 require("auto-save").setup {
+			-- your config goes here
+			-- or just leave it empty :)
+	     }
+	end,
+})
 end)
 
