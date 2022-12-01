@@ -7,6 +7,7 @@
 ;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
 
 [colors]
+backgroundD = #1d2021
 background = #282828
 background0 = #3c3836
 background1 = #504945
@@ -47,7 +48,7 @@ fixed-center = true
 botton = false
 separator = |
 
-background = ${colors.background}
+background = ${colors.backgroundD}
 foreground = ${colors.foreground}
 
 line-size = 3
@@ -59,17 +60,17 @@ border-color = #00000000
 padding-left = 0
 padding-right = 1
 
-module-margin-left = 1
+module-margin-left = 1 
 module-margin-right = 2
 
-font-0 = "Fira Code Nerd Font:size=10;2" 
-font-1 = "FontAwesome:size=13;2"
+font-0 = "FontAwesome:size=12;2"
+font-1 = "FontAwesome:size=12;2"
 font-2 = "Fira Code Nerd Font:size=10;2"  
 font-3 = "Fira Code Nerd Font:size=10;2" 
 
 modules-left = i3
-modules-center = date powermenu
-modules-right = spotify pulseaudio  weather memory cpu filesystem 
+modules-center =
+modules-right = spotify pulseaudio weather filesystem date
 ; modules-right = filesystem xbacklight pulseaudio xkeyboard memory cpu wlan eth battery temperature date powermenu
 
 tray-position = none
@@ -128,8 +129,8 @@ label-mode-background = ${colors.primary}
 
 ; focused = Active workspace on focused monitor
 label-focused = %name%
-label-focused-background = ${colors.background}
-label-focused-foreground = ${colors.orange}
+label-focused-background = ${colors.backgroundD}
+label-focused-foreground = ${colors.yellow}
 label-focused-underline= ${colors.primary}
 label-focused-padding = 1
 
@@ -173,14 +174,14 @@ label = %percentage_used%%
 type = internal/date
 interval = 1
 
-date = 
-date-alt = " %Y-%m-%d"
+date = "%a %d %b "
+date-alt = "%b  %d  %G"
 
 time = %H:%M
 time-alt = %H:%M:%S
 
-format-prefix = " "
-format-prefix-foreground = ${colors.light-green}
+; format-prefix = " "
+; format-prefix-foreground = ${colors.light-green}
 ; format-underline = #0a6cf5
 
 label = %date% %time%
@@ -189,8 +190,8 @@ label-font = 2
 [module/pulseaudio]
 type = internal/pulseaudio
 
-format-volume = <label-volume> <bar-volume>
-label-volume =  %percentage%%
+format-volume = <label-volume>
+label-volume =   %percentage%%
 label-volume-foreground = ${root.pink}
 
 label-muted = 
@@ -205,7 +206,7 @@ bar-volume-foreground-4 = ${colors.green}
 bar-volume-foreground-5 = ${colors.dark-yellow}
 bar-volume-foreground-6 = ${colors.red}
 bar-volume-gradient = false
-bar-volume-indicator = 
+bar-volume-indicator = 
 bar-volume-indicator-font = 2
 bar-volume-fill = ─
 bar-volume-fill-font = 2
@@ -222,12 +223,12 @@ expand-right = true
 
 format-spacing = 1
 
-label-open = 
-label-open-foreground = ${colors.foreground}
+; label-open = 
+label-open-foreground = ${colors.red}
 label-close =  cancel
-label-close-foreground = ${colors.foreground0y}
+label-close-foreground = ${colors.red}
 label-separator = |
-label-separator-foreground = ${colors.foreground1}
+label-separator-foreground = ${colors.red}
 
 menu-0-0 = reboot
 menu-0-0-exec = menu-open-1
@@ -247,7 +248,7 @@ menu-2-1-exec = menu-open-0
 
 [module/weather]
 type = custom/script
-interval = 10
+interval = 120
 format = <label>
 format-prefix = ""
 format-prefix-foreground = ${colors.gray}
@@ -262,11 +263,32 @@ label-foreground = ${colors.foreground}
 format-prefix-foreground = %{colors.foreground}
 
 exec = python3 /home/lautaroacost/Desktop/Programs/Python/spotify.py -f '{song}' -t 10
-format-underline = ${colors.light-green}
+; format-background = ${colors.yellow}
+; format-overline = ${colors.yellow}
 ;control players (optional)
 click-left = playerctl --player=spotify play-pause 
 click-right = playerctl --player=spotify next 
 click-middle = playerctl --player=spotify previous 
+
+
+[module/network]
+type = internal/network
+interface = wlan1
+interface-type = wireless
+
+interval = 3.0
+format-prefix =""
+formate-background = ${colors.red}
+
+udspeed-minwidth = 5
+
+accumulate-stats = true
+
+unknown-as-up = true
+
+speed-unit = ''
+
+
 
 [settings]
 screenchange-reload = true
