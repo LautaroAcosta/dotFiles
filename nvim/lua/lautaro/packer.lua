@@ -6,13 +6,13 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function()
     -- Package Manager
     use 'wbthomason/packer.nvim'
-    
     -- Plugin para Latex
     use 'lervag/vimtex'
-    
     -- Tema de color
     use 'sainnhe/gruvbox-material'
-    
+    use 'morhetz/gruvbox'
+    use 'folke/tokyonight.nvim'
+    use { "catppuccin/nvim", as = "catppuccin" }
     -- Plugin para configurar la apariencia del editor
     use {
         "windwp/nvim-autopairs",
@@ -32,9 +32,7 @@ return require('packer').startup(function()
     use 'ap/vim-css-color'
     -- NERDTree  
     use 'scrooloose/nerdtree'
-
     use 'tiagofumo/vim-nerdtree-syntax-highlight'
-        
     -- TreeSitter
     use {'nvim-treesitter/nvim-treesitter', run = ":TSUpdate",}
 
@@ -48,7 +46,6 @@ return require('packer').startup(function()
     use 'hrsh7th/nvim-cmp'
     use 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
     use 'L3MON4D3/LuaSnip' -- Snippets plugin
-    
     -- Telescope, File Finder
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.0',
@@ -67,16 +64,15 @@ return require('packer').startup(function()
 
     --QuickSearch
     use 'justinmk/vim-sneak'
-    
-    -- Autosave
-    use({
-	"Pocco81/auto-save.nvim",
-	config = function()
-		 require("auto-save").setup {
-			-- your config goes here
-			-- or just leave it empty :)
-	     }
-	end,
-})
+
+
+    -- Catppuccin Integration
+    require("catppuccin").setup({
+        integrations ={
+            markdown = true
+        }
+    })
+
+
 end)
 

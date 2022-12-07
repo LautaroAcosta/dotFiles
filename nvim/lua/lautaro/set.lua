@@ -34,8 +34,6 @@ vim.keymap.set('n','<C-t>'      ,':tabnew<CR>')
 vim.keymap.set('n','<C-Left>'   ,':tabprevious<CR>')
 vim.keymap.set('n','<C-Right>'  ,':tabnext<CR>')
 
-
-
 vim.cmd[[
     set nocompatible
     filetype plugin on

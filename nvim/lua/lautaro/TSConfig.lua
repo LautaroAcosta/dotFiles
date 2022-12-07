@@ -4,7 +4,7 @@ if not status_ok then
 end
 
 configs.setup {
-    ensure_installed = {"haskell","c","rust", "java", "javascript", "python", "lua", "sql", "cpp"},
+    ensure_installed = {"haskell","c","rust", "java", "javascript", "python", "lua", "sql", "cpp","go"},
     sync_install = false,
     ignore_install = { "" },
     highlight = {

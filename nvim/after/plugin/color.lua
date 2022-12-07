@@ -4,4 +4,4 @@
 vim.g.gruvbox_material_transparent_bg = true
 --vim.g.gruvbox_material_background = 'medium'
 vim.opt.background = "dark"
-vim.cmd("colorscheme gruvbox-material")
+vim.cmd("colorscheme catppuccin-mocha")
