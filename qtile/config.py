@@ -80,7 +80,7 @@ layout_defaults = dict(
     # border_focus_stack=c_alt,
     # border_normal_stack=c_bgn,
     grow_amount=10,
-    margin = 5,
+    margin = 2,
 )
 
 layouts = [
@@ -113,7 +113,7 @@ screens = [
         top=bar.Bar(
             [
                 widget.CurrentLayoutIcon(scale=0.7),
-                widget.GroupBox(highlight_method='text',active=text, ),
+                widget.GroupBox(highlight_method='block', foreground=green, active=text, ),
                 widget.Prompt(),
                 widget.WindowName(max_chars=15),
                 widget.Chord(
@@ -124,16 +124,14 @@ screens = [
                 ),
                 widget.Systray(),
                 widget.Pomodoro(color_inactive=blue, color_active=green, color_break=yellow),
-                widget.PulseVolume(),
+                widget.Volume(),
                 widget.DF(visible_on_warn=False),
-                # widget.NvidiaSensors(),
-                widget.OpenWeather(app_key='8f764bacadc847395394ff30507a886c',cityid="3435217",language='es', format=' {temp} °{units_temperature}, {humidity}, {icon}'),
-                widget.Clock(format="%a %d %b %H:%M %p", foreground=blue),
-                widget.QuickExit(default_text = '', padding = 5),
+                widget.Net(interface='wlx1caff768f339',format=' {up}  {down}'),
+                widget.OpenWeather(app_key='8f764bacadc847395394ff30507a886c',cityid="3435217",language='es', format=' {temp} °{units_temperature}, {icon}'),
+                widget.Clock(format="%a, %b %d %H:%M %p", foreground=blue),
             ],
             22,
-            border_width=[2, 0, 2, 0],  # Draw top and bottom borders
-            # border_color=["#ff0", "000000", "#ff00ff", "#000000"]  # Borders are magenta
+            border_width=[2, 0, 2, 0],  
             opacity= 0.3,
         ),
     ),
@@ -160,7 +158,7 @@ screens = [
                 widget.QuickExit(),
             ],
             24,
-            # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
+            border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
         ),
     ),
