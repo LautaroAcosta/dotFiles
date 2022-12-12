@@ -15,6 +15,7 @@ from libqtile.utils import guess_terminal
 
 mod = "mod4"
 terminal = "kitty"
+flameshot = "flameshot gui --clipboard"
 
 keys = [
     Key([mod], "h", lazy.layout.left(), desc="Move focus to left"),
@@ -49,6 +50,8 @@ keys = [
     Key([mod], "d", lazy.spawn('rofi -show drun'), desc="Spawn a command using a prompt widget"),
     Key([], 'XF86AudioLowerVolume', lazy.spawn('amixer sset Master,0 5%-')),
     Key([], 'XF86AudioRaiseVolume', lazy.spawn('amixer sset Master,0 5%+')),
+    # Key([mod], "s", lazy.spawn('~/Programs/Bash/flame.sh')),
+    Key([mod], "s", lazy.spawn(flameshot)),
 ]
 
 groups = [Group(i) for i in "123456789"]
@@ -108,7 +111,11 @@ extension_defaults = widget_defaults.copy()
 
 screens = [
     Screen(
-        wallpaper = '~/Pictures/wallhaven-7pgy5y.png',
+        wallpaper ='~/Pictures/wallhaven-yxmm3g.png',
+        # wallpaper ='~/Pictures/wallhaven-vqgxq8.jpg',
+        # wallpaper ='~/Pictures/wallhaven-kxw9o1.png',
+        # wallpaper ='~/Pictures/wallhaven-3l9z69.png',
+        # wallpaper = '~/Pictures/wallhaven-7pgy5y.png',
         wallpaper_mode='default',
         top=bar.Bar(
             [
@@ -135,31 +142,33 @@ screens = [
             opacity= 0.3,
         ),
     ),
-    Screen(
-        wallpaper = '~/Pictures/wallhaven-7pgy5y.png',
+     Screen(
+        wallpaper ='~/Pictures/wallhaven-yxmm3g.png',
+        # wallpaper ='~/Pictures/wallhaven-vqgxq8.jpg',
+        # wallpaper ='~/Pictures/wallhaven-kxw9o1.png',
+        # wallpaper ='~/Pictures/wallhaven-3l9z69.png',
+        # wallpaper = '~/Pictures/wallhaven-7pgy5y.png',
         wallpaper_mode='default',
         top=bar.Bar(
             [
-                widget.CurrentLayout(),
-                widget.GroupBox(),
+                widget.CurrentLayoutIcon(scale=0.7),
+                widget.GroupBox(highlight_method='block', foreground=green, active=text, ),
                 widget.Prompt(),
-                widget.WindowName(),
+                widget.WindowName(max_chars=15),
                 widget.Chord(
                     chords_colors={
                         "launch": ("#ff0000", "#ffffff"),
                     },
                     name_transform=lambda name: name.upper(),
                 ),
-                # widget.TextBox("default config", name="default"),
-                # widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
-                # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
-                # widget.StatusNotifier(),
-                widget.Clock(format="%a %d %b %H:%M %p", foreground="#458588"),
-                widget.QuickExit(),
+                widget.Volume(),
+                widget.DF(visible_on_warn=False),
+                widget.OpenWeather(app_key='8f764bacadc847395394ff30507a886c',cityid="3435217",language='es', format=' {temp} °{units_temperature}, {icon}'),
+                widget.Clock(format="%a, %b %d %H:%M %p", foreground=blue),
             ],
-            24,
-            border_width=[2, 0, 2, 0],  # Draw top and bottom borders
-            # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
+            22,
+            border_width=[2, 0, 2, 0],  
+            opacity= 0.3,
         ),
     ),
 

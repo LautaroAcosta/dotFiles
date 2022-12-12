@@ -35,6 +35,11 @@ return require('packer').startup(function()
     use 'tiagofumo/vim-nerdtree-syntax-highlight'
     -- TreeSitter
     use {'nvim-treesitter/nvim-treesitter', run = ":TSUpdate",}
+    require('ufo').setup({
+        provider_selector = function(bufnr, filetype, buftype)
+            return {'treesitter', 'indent'}
+        end
+    })
 
     -- Configuración para los servidores de lenguaje
     use 'neovim/nvim-lspconfig'
@@ -65,13 +70,24 @@ return require('packer').startup(function()
     --QuickSearch
     use 'justinmk/vim-sneak'
 
-
     -- Catppuccin Integration
     require("catppuccin").setup({
         integrations ={
             markdown = true
         }
     })
+
+    -- Folding
+    use {'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'}
+
+    -- Markdown Preview
+    use({
+    "iamcco/markdown-preview.nvim",
+    run = function() vim.fn["mkdp#util#install"]() end,
+    })
+    use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
+
+
 
 
 end)

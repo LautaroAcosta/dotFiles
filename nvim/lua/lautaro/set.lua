@@ -21,18 +21,27 @@ vim.opt.wrap = false
 vim.opt.list = true
 vim.opt.listchars:append "eol:↴"
 
+vim.o.foldcolumn = '1'
+vim.o.foldlevel = 99
+vim.o.foldlevelstart = 99
+vim.o.foldenable = true
+
 vim.opt.spell = es
 
 vim.cmd[[
     setlocal spell spelllang=es
+    set spellfile=~/.config/nvim/spell/es.utf-8.add
     setlocal spell!
  ]]
 
+vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
+vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
 vim.keymap.set('n','<leader>s'  , ':setlocal spell!<CR>')
 vim.keymap.set('n','<F2>'       ,':NERDTreeToggle<CR>')
 vim.keymap.set('n','<C-t>'      ,':tabnew<CR>')
 vim.keymap.set('n','<C-Left>'   ,':tabprevious<CR>')
 vim.keymap.set('n','<C-Right>'  ,':tabnext<CR>')
+vim.keymap.set('n','<C-m>'       ,':MarkdownPreviewToggle<CR>')
 
 vim.cmd[[
     set nocompatible
