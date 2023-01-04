@@ -22,12 +22,9 @@
       ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
     }),
     sources = cmp.config.sources({
-      { name = 'nvim_lsp' },
-    	--  { name = 'vsnip' }, -- For vsnip users.
-       { name = 'luasnip' }, -- For luasnip users.
-       { name = "crates" },
-      -- { name = 'ultisnips' }, -- For ultisnips users.
-      -- { name = 'snippy' }, -- For snippy users.
+	{ name = 'nvim_lsp' },
+	{ name = 'luasnip' },
+	{ name = "crates" },
     }, {
       { name = 'buffer' },
     })
@@ -59,44 +56,3 @@
       { name = 'cmdline' }
     })
   })
-
-  -- Set up lspconfig.
-  require("nvim-lsp-installer").setup {}
-
-  local capabilities = require('cmp_nvim_lsp').default_capabilities()
-  -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
-  require('lspconfig')['jedi_language_server'].setup {
-    capabilities = capabilities
-  }
-  
-  require('lspconfig')['clangd'].setup {
-    capabilities = capabilities
-  }
-
-   require('lspconfig')['rust_analyzer'].setup {
-    capabilities = capabilities
-  }
-
-   require('lspconfig')['texlab'].setup {
-    capabilities = capabilities
-  }
-
-   require('lspconfig')['hls'].setup {
-    capabilities = capabilities
-  }
-
-    require('lspconfig')['gopls'].setup {
-    capabilities = capabilities
-  }
-
-
-  -- require('lspconfig')['sumneko_lua'].setup{
-  --     capabilities = capabilities
-  -- }
-
-
-
-
-
-
-

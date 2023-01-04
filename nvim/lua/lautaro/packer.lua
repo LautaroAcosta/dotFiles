@@ -11,7 +11,7 @@ return require('packer').startup(function()
     -- Tema de color
     use 'sainnhe/gruvbox-material'
     use 'morhetz/gruvbox'
-    use 'folke/tokyonight.nvim'
+    -- use 'folke/tokyonight.nvim'
     use { "catppuccin/nvim", as = "catppuccin" }
     -- Plugin para configurar la apariencia del editor
     use {
@@ -43,7 +43,10 @@ return require('packer').startup(function()
 
     -- Configuración para los servidores de lenguaje
     use 'neovim/nvim-lspconfig'
-    use 'williamboman/nvim-lsp-installer'
+    -- use 'williamboman/nvim-lsp-installer'
+    use 'williamboman/mason.nvim'
+    use 'williamboman/mason-lspconfig.nvim'
+    
     use 'hrsh7th/cmp-nvim-lsp'
     use 'hrsh7th/cmp-buffer'
     use 'hrsh7th/cmp-path'
